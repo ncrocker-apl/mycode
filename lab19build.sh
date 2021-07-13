@@ -18,10 +18,8 @@ sudo ip link set bowser netns bowser
 # bring interface UP in bowser and peach
 sudo ip netns exec peach ip link set dev peach up
 sudo ip netns exec bowser ip link set dev bowser up
-
-# add IP address to interface
-sudo ip netns exec peach ip addr add 10.64.2.2/24 dev peach
-sudo ip netns exec bowser ip addr add 10.64.2.3/24 dev bowser
+sudo ip netns exec peach ip link set dev lo up
+sudo ip netns exec bowser ip link set dev lo up
 
 # add VLANs
 sudo ovs-vsctl set port peach tag=50
